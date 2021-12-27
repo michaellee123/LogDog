@@ -1,4 +1,5 @@
-# LogDog
+# LogDog [![](https://jitpack.io/v/michaellee123/LogDog.svg)](https://jitpack.io/#michaellee123/LogDog)
+
 
  A Beautiful Log Printer For OkHttp.
 
@@ -13,7 +14,7 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 //something else...
-implementation 'com.github.michaellee123:logdog:1.0.0'
+implementation 'com.github.michaellee123:LogDog:[latest-version]' // find the latest-version in the JitPack badge, it's top of this document.
 ```
 
 ## Use
