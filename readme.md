@@ -22,7 +22,9 @@ implementation 'com.github.michaellee123:LogDog:[latest-version]' // find the la
 You just need call a funcation in your `OkHttpClient.Builder`, If you use retrofit, just need call once when init.
 
 ```kotlin
-val okHttpClient: OkHttpClient = OkHttpClient.Builder().logDog("LogDog").build()
+val okHttpClient: OkHttpClient = OkHttpClient.Builder()
+    .logDog(tag = "LogDog",enable = BuildConfig.DEBUG)
+    .build()
 ```
 
 Or use more arguments:
@@ -32,7 +34,7 @@ val logDog = LogDog(
     tag = "LogDog", // for logcat print tag, if you use custom print, the tag will be useless
     enable = BuildConfig.DEBUG, // whether to enable print log
     print = { it ->
-        Log.e("LogDog", it) // custom print, you can change the log level, or save the log to disk cache or more.
+        Log.e(tag, it) // custom print, you can change the log level, or save the log to disk cache or more.
     },
     gson = GsonBuilder().setPrettyPrinting().serializeNulls().create() // log dog uses gson's pretty printing to format the output json string.
 )

@@ -7,8 +7,8 @@ import com.google.gson.JsonParser
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 
-fun OkHttpClient.Builder.logDog(tag: String): OkHttpClient.Builder {
-    val logInterceptor = HttpLoggingInterceptor(LogDog(tag))
+fun OkHttpClient.Builder.logDog(tag: String, enable: Boolean = true): OkHttpClient.Builder {
+    val logInterceptor = HttpLoggingInterceptor(LogDog(tag, enable))
     logInterceptor.level = HttpLoggingInterceptor.Level.BODY
     addNetworkInterceptor(logInterceptor)
     return this
@@ -25,7 +25,10 @@ class LogDog(
         if (!enable || message.trim().isEmpty()) {
             return
         }
-        if ((message.startsWith("{") && message.endsWith("}")) || (message.startsWith("[") && message.endsWith("]"))) {
+        if ((message.startsWith("{") && message.endsWith("}")) || (message.startsWith("[") && message.endsWith(
+                "]"
+            ))
+        ) {
             print("├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
             val json = gson.toJson(JsonParser.parseString(message))
             val prints = json.toString().split("\n")
