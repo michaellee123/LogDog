@@ -8,10 +8,10 @@ android {
     compileSdk 31
 
     defaultConfig {
-        minSdk 21
+        minSdk 17
         targetSdk 31
-        versionCode 3
-        versionName "1.0.2"
+        versionCode 4
+        versionName "1.0.3"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -55,7 +55,7 @@ afterEvaluate {
                 // You can then customize attributes of the publication as shown below.
                 groupId = 'com.github.michaellee123'
                 artifactId = 'logdog'
-                version = '1.0.1'
+                version = '1.0.3'
             }
         }
     }
